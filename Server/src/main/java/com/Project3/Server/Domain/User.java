@@ -1,9 +1,14 @@
 package com.Project3.Server.Domain;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -27,8 +32,9 @@ public class User {
 	// Password should be supplied after encryption.
 	private String password;
 	
-	
-	//To do: roles column.
+	@ManyToMany
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+	Set<Role> roles;
 
 	public int getId() {
 		return id;
@@ -62,9 +68,17 @@ public class User {
 		this.password = password;
 	}
 	
+	public Set<Role> getRoles(){
+		return roles;
+	}
+	
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	
 	@Override
 	public String toString() {
-		String string = String.format("id: '%s', username: '%s', email: '%s', password: '%s'", this.getId(), this.getUsername(), this.getEmail(), this.getPassword());
+		String string = String.format("id: '%s', username: '%s', email: '%s', password: '%s', roles: '%s'", this.getId(), this.getUsername(), this.getEmail(), this.getPassword(), this.getRoles());
 		return string;
 	}
 	

@@ -2,6 +2,9 @@ package com.Project3.Server.Domain;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,14 +17,23 @@ public class UserTest {
 	@Before
 	public void initializeVariables(){
 		user = new User();
+		int testInt = 0;
 		String testString = "test";
-		user.setId(0);
+		
+		Role testRole = new Role();
+		testRole.setId(testInt);
+		testRole.setName(testString);
+		Set<Role> testRoles = new HashSet<>();
+		testRoles.add(testRole);
+		
+		user.setId(testInt);
 		user.setUsername(testString);
 		user.setEmail(testString);
 		user.setPassword(testString);
+		user.setRoles(testRoles);
 		
-		relevantUserToStringValue = String.format("id: '%s', username: '%s', email: '%s', password: '%s'",
-				0, testString, testString, testString);
+		relevantUserToStringValue = String.format("id: '%s', username: '%s', email: '%s', password: '%s', roles: '%s'",
+				testInt, testString, testString, testString, testRoles);
 	}
 	
 	@Test
