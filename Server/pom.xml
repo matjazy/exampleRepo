@@ -65,7 +65,13 @@
 		    <groupId>commons-validator</groupId>
 		    <artifactId>commons-validator</artifactId>
 		    <version>1.6</version>
-		</dependency>        
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20150729</version>
+		</dependency>		        
 				
 	</dependencies>
 
