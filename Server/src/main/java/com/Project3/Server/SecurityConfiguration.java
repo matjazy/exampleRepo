@@ -11,6 +11,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) {
 		try {
 			httpSecurity.authorizeRequests().antMatchers("/").permitAll();
+			httpSecurity.authorizeRequests().antMatchers("/users").permitAll();
+			httpSecurity.csrf().disable();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

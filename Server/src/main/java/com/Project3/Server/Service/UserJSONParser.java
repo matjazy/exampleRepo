@@ -19,7 +19,6 @@ public class UserJSONParser {
 	 * @return User with relevant values.
 	 */
 	public User parse(JSONObject jsonObject) {
-		return new User(jsonObject.getString("username"), jsonObject.getString("password"), jsonObject.getString("email"));
-	}
-	
+		return new User(jsonObject.get("username").toString(), jsonObject.get("password").toString(), jsonObject.get("email").toString());
+	}	
 }
