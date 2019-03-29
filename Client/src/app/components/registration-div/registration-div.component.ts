@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
   selector: 'app-registration-div',
@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
 })
 export class RegistrationDivComponent implements OnInit {
 
-  constructor() { }
+  private username: string;
+  private password: string;
+  private email: string;
+
+  constructor(private registrationService: RegistrationService) { }
 
   ngOnInit() {
   }

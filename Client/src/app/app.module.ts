@@ -6,6 +6,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { RegistrationDivComponent } from './components/registration-div/registration-div.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'registration', component: RegistrationDivComponent },
@@ -23,7 +25,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
-    )
+    ),
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

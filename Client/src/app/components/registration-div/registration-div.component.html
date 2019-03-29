@@ -1,11 +1,15 @@
 <div>
   <form>
     <p>Enter username you would like to have below</p>
-    <input name="username" type="text" />
+    <input name="username" [(ngModel)]="username" required type="text" />
     <p>Enter your e-mail below</p>
-    <input name="email" type="text" />
+    <input name="email" [(ngModel)]="email" required type="text" />
     <p>Enter password you would like to have below</p>
-    <input name="password" type="password" /><br><br>
-    <button type="submit">Confirm</button>
+    <input name="password" [(ngModel)]="password" required type="password" /><br><br>
+    <button (click)="this.registrationService.registerUser(username, email, password)">Confirm</button>
   </form>
+  <div name="registrationResultDiv">
+    <p *ngIf="this.registrationService.responseStatus==200">Registration successful.</p>
+    <p *ngIf="this.registrationService.responseStatus==400">Registration unsuccessful.</p>
+  </div>
 </div>
