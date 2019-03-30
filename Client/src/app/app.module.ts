@@ -8,6 +8,8 @@ import { RegistrationDivComponent } from './components/registration-div/registra
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AlertModule } from 'ngx-bootstrap';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 
 const appRoutes: Routes = [
   { path: 'registration', component: RegistrationDivComponent },
@@ -18,7 +20,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginFormComponent,
-    RegistrationDivComponent
+    RegistrationDivComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ const appRoutes: Routes = [
       { enableTracing: true }
     ),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AlertModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+a.custom-link:hover{
+    cursor: pointer;
+}
