@@ -8,12 +8,17 @@ import { RegistrationDivComponent } from './components/registration-div/registra
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AlertModule } from 'ngx-bootstrap';
+import { AlertModule, LinkedList } from 'ngx-bootstrap';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { VotingFormComponent } from './components/voting-form/voting-form.component';
+import { ResultsFormComponent } from './components/results-form/results-form.component';
+import { AdminFormComponent } from './components/admin-form/admin-form.component';
 
 const appRoutes: Routes = [
   { path: 'registration', component: RegistrationDivComponent },
-  { path: '', component: LoginFormComponent }
+  { path: '', component: LoginFormComponent },
+  { path: 'admin', component: AdminFormComponent },
+  { path: 'voting', component: VotingFormComponent }
 ];
 
 @NgModule({
@@ -21,7 +26,10 @@ const appRoutes: Routes = [
     AppComponent,
     LoginFormComponent,
     RegistrationDivComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    VotingFormComponent,
+    ResultsFormComponent,
+    AdminFormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,3 +45,16 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export interface PoliticalParty {
+  id: number;
+  name: string;
+  members: LinkedList<Candidate>;
+}
+
+export interface Candidate {
+  id: number;
+  name: string;
+  politicalParty: PoliticalParty;
+  numberOfVotes: number;
+}

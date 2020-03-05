@@ -1,0 +1,73 @@
+<form>
+  <button (click)="closeVoting()">End voting</button><br><br>
+</form>
+<form>
+  <button (click)="getCandidates()" type="submit">getCandidates</button>
+  <div id="candidateEditionDiv" style="text-align:center" *ngIf="candidatesList">
+    <div id="candidatesDiv" *ngFor="let candidate of candidatesList">
+      <table>
+        <tr>
+          <td>id: {{candidate.id}}</td>
+          <td>name: <input [value]="candidate.name" (input)="candidate.name = $event.target.value"></td>
+          <button (click)="modifyCandidate(candidate.id, candidate.name, candidate.politicalParty)" type="submit">Modify
+            candidate</button>
+          <button (click)="deleteCandidate(candidate.id)" type="submit">Delete candidate</button>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>
+
+<form>
+  <button (click)="getParties()" type="submit">getParties</button>
+  <div id="partyEditionDiv" style="text-align:center" *ngIf="partiesList">
+    <div id="partiesDiv" *ngFor="let party of partiesList">
+      <table>
+        <tr>
+          <td>id: {{party.id}}</td>
+          <input [value]="party.name" (input)="party.name = $event.target.value">
+          <button (click)="updateParty(party.id, party.name)" type="submit">Modify party</button>
+          <button (click)="deleteParty(party.id)" type="submit">Delete party</button>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>
+
+<form>
+  <table>
+    <tr>
+      <td>Name</td>
+      <input [value]="" (input)="partyName = $event.target.value">
+      <button (click)="createParty(partyName)" type="submit">Create party</button>
+    </tr>
+  </table>
+</form>
+<form>
+  <table>
+    <tr>
+      Name
+      <input [value]="" (input)="candidateName = $event.target.value">
+      Party name
+      <input [value]="" (input)="candidatePartyName = $event.target.value">
+      <button (click)="createCandidate(candidateName, candidatePartyName)" type="submit">Create candidate</button>
+    </tr>
+  </table>
+</form>
+
+
+<form>
+  <button (click)="getElectionResult()" type="submit">get election result</button>
+  <div id="winningCandidateEditionDiv" style="text-align:center" *ngIf="winningCandidatesList">
+    <div id="winningCandidatesDiv" *ngFor="let candidate of winningCandidatesList">
+      <table>
+        <tr>
+          <td>id: {{candidate.id}}</td>
+          <td>name: {{candidate.name}}</td>
+          <td>party: {{candidate.politicalParty.name}} </td>
+          <td>votes: {{candidate.numberOfVotes}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>

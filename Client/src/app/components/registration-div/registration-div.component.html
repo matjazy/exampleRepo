@@ -5,8 +5,10 @@
     <p>Enter your e-mail below</p>
     <input name="email" [(ngModel)]="email" required type="text" />
     <p>Enter password you would like to have below</p>
-    <input name="password" [(ngModel)]="password" required type="password" /><br><br>
-    <button (click)="this.registrationService.registerUser(username, email, password)">Confirm</button>
+    <input name="password" [(ngModel)]="password" required type="password" />
+    <p>Confirm the password below</p>
+    <input name="repassword" [(ngModel)]="repassword" required type="password" /><br><br>
+    <button (click)="this.registrationService.registerUser(username, email, password, repassword)">Confirm</button>
   </form>
   <div name="registrationResultDiv">
     <p *ngIf="this.registrationService.responseStatus==200">Registration successful.</p>

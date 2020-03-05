@@ -1,0 +1,16 @@
+<form>
+  <button (click)="getCandidates()" type="submit">getCandidates</button>
+  <div id="votingDiv" style="text-align:left" *ngIf="candidatesList">
+    <div id="candidatesDiv" *ngFor="let candidate of candidatesList">
+      <table>
+        <tr>
+          <td>id: {{candidate.id}}</td>
+          <td>name: {{candidate.name}}</td>
+          <td>votes: <input [value]="candidate.numberOfVotes" (input)="candidate.numberOfVotes = $event.target.value">
+          </td>
+          <button (click)="vote(candidate.id, candidate.numberOfVotes)" type="submit">vote</button>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>
